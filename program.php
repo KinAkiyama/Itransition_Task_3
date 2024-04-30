@@ -69,7 +69,7 @@ class Program
             die();
         }
     }
-
+    
     // public function inputParam ($args): void
     // {
     //     $this -> setArrOfArgs($args);
@@ -113,7 +113,6 @@ class Program
         $hmac = new HMAC;
         $res = new Rules;
 
-        // $this -> inputParam($args);
         $this -> setArrOfArgs($args);
 
         if (!($this -> checkArgs($this -> getArrOfArgs())))
