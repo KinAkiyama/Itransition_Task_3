@@ -70,13 +70,10 @@ class Program
         }
     }
 
-    public function inputParam () : void 
-    {
-        echo "Please enter the odd number of parameters (more than 3) to start the game \n\r";
-        echo "( Input example >> Rock Paper Scissors ) \n\r";
-
-        $this -> setArrOfArgs(explode(' ', readline(' >> ')));
-    }
+    // public function inputParam ($args): void
+    // {
+    //     $this -> setArrOfArgs($args);
+    // }
 
     public function move (): string 
     {
@@ -110,17 +107,18 @@ class Program
         return 0;
     }
 
-    public function Main (): void 
+    public function Main ($args): void 
     {
         $key = new HMAC;
         $hmac = new HMAC;
         $res = new Rules;
 
-        $this -> inputParam();
+        // $this -> inputParam($args);
+        $this -> setArrOfArgs($args);
 
-        while (!($this -> checkArgs($this -> getArrOfArgs())))
+        if (!($this -> checkArgs($this -> getArrOfArgs())))
         {
-            $this -> inputParam();
+            die();
         }
         
         $PCmove = $this -> move();
@@ -145,9 +143,13 @@ class Program
         echo 'You '. $res -> decide($this -> getIndex($PCmove), $this -> getIndex($userMove), sizeof($this -> getArrOfArgs())). "\n\r";
 
         echo "HMAC key: \n\r". $key ->getSecretKey(). "\n\r";
-        echo "You can chec the result here -> https://www.liavaag.org/English/SHA-Generator/HMAC/";
+        echo "You can check the result here -> https://www.liavaag.org/English/SHA-Generator/HMAC/";
     }
 }
 
 $test = new Program;
-$test->Main();
+
+$args = $argv;
+array_shift($args);
+
+$test->Main($args);
