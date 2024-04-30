@@ -70,11 +70,6 @@ class Program
         }
     }
 
-    // public function inputParam ($args): void
-    // {
-    //     $this -> setArrOfArgs($args);
-    // }
-
     public function move (): string 
     {
         $arr = $this -> getArrOfArgs();
