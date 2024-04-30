@@ -69,7 +69,7 @@ class Program
             die();
         }
     }
-    
+
     // public function inputParam ($args): void
     // {
     //     $this -> setArrOfArgs($args);
